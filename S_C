@@ -1,0 +1,1041 @@
+#include<iostream>
+#include<set>
+#include<cstdlib>
+#include<ctime>
+#include<fstream>
+#include<thread>
+#include<chrono>
+#include<numeric>
+#include<sstream>
+#include<cmath>
+#include<iomanip>
+#include<stack>
+#include<vector>
+
+using namespace std;
+
+
+constexpr double price_of_bread(){
+  return 1.0;
+}
+
+constexpr double price_of_pilau(){
+  return 8.50;
+}
+constexpr double price_of_milk(){
+  return 3.0;
+}
+constexpr double price_of_sweets(){
+  return 0.5;
+}
+constexpr double price_of_meat(){
+  return 1.0;
+}
+constexpr double price_of_gas(){
+  return 1.0;
+}
+constexpr double price_of_yoghurt(){
+  return 10.0;
+}
+constexpr double price_of_chicken(){
+  return 5.0;
+}
+constexpr double price_of_pizza(){
+  return 12.0;
+}
+constexpr double price_of_smoothie(){
+  return 7.0;
+}
+constexpr double price_of_beef_steak(){
+  return 15.0;
+}
+constexpr double price_of_tea_or_coffee(){
+  return 2.0;
+}
+constexpr double price_of_onions(){
+  return 1.5;
+}
+constexpr double price_of_tomatoes(){
+  return 4.5;
+}
+constexpr double price_of_potatoes(){
+  return 3.0;
+}
+
+constexpr double price_of_fruits(){
+  return 6.0;
+}
+constexpr double price_of_salads(){
+  return 5.5;
+}
+constexpr double price_of_kales(){
+  return 4.5;
+}
+constexpr double price_of_grain(){
+  return 11.0;
+}
+constexpr double price_of_frozen_vegetable(){
+  return 9.5;
+}
+constexpr double price_of_tablets(){
+  return 15.0;
+}
+constexpr double price_of_syrups(){
+  return 20.0;
+}
+constexpr double price_of_injection(){
+  return 49.5;
+}
+constexpr double price_of_prescriptions(){
+    return 0.00;
+}
+constexpr double price_of_over_the_counter(){
+  return 10.0;
+}
+constexpr double price_of_restricted_meds(){
+  return 100.0;
+}
+constexpr double price_of_pain_killers(){
+  return 15.50;
+}
+constexpr double price_of_cream(){
+  return 35.0;
+}
+constexpr double price_of_shorts(){
+  return 40.0;
+}
+constexpr double price_of_skirts(){
+  return 39.0;
+}
+constexpr double price_of_dress(){
+  return 55.0;
+}
+constexpr double price_of_t_shirt(){
+  return 15.0;
+}
+constexpr double price_of_trouser(){
+  return 30.0;
+}
+constexpr double price_of_jacket(){
+  return 85.0;
+}
+constexpr double price_of_shirt(){
+  return 45.0;
+}
+constexpr double price_of_hoodie(){
+  return 50.0;
+}
+constexpr double price_of_jumper(){
+  return 48.0;
+}
+
+
+
+/*access controls*/
+
+void Control(){
+    char response,section;
+    
+    std::cout<<"Welcome to our Shopping Mart"<<std::endl;
+    
+    std::cout<<"Would you like to make any purchases today.[Y/N]:";
+    std::cin>>response;
+    if(response=='Y'||'y'){
+    }else{
+    std::cout<<"Hope you visit us next Time."<<std::endl;
+    abort();
+    }
+    std::cout<<"which section would you like to make you purchase today: ";
+    cin>>section;
+    switch(section){
+      case 1:
+      std::cout<<"welcome to the convenience section";
+      break;
+      case 2:
+      std::cout<<"welcome to the vegetables section";
+      break;
+      case 3:
+      std::cout<<"welcome to the clothing section";
+      break;
+      default:
+      std::cout<<"bye bye ";
+      break;
+    
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*class supermarket*/
+class Mart{
+  public:
+
+  void setName(){
+    std::cout<<"please enter your Name: ";
+    std::cin>>name;
+    
+
+
+
+    if(name=="kaka"){
+        std::cout<<"********************"<<"Welcome"<<" "<<name;
+    }else{
+        std::cout<<"please try again next time";
+        abort();
+    }
+  }
+  
+  string getName(){
+    return name; 
+  }
+  
+
+
+  void setCost(){
+    
+    int choice;
+    int item_amount;
+
+    set<string>Products={"Bread","Milk","Meat","Sweets","Gas","Yoghurt"};
+    
+
+    std::cout<<"*****************************"<<std::endl;
+    std::cout<<"Choose from the following Items"<<std::endl;
+    std::cout<<"*****************************"<<std::endl;
+    
+   
+    for(auto it=Products.begin(); it!=Products.end(); it++){
+        std::cout<<" "<<*it<<std::endl;
+    }
+    
+    std::cout<<"*****************************"<<std::endl;
+   
+    
+    do{
+    
+    std::cout<<"*****************************"<<std::endl;
+    
+    std::cout<<"press 1 to buy Bread"<<"\t";
+    std::cout<<"press 2 to buy Milk"<<"\t";
+    std::cout<<"press 3 to buy Sweets"<<"\t"<<std::endl;
+    std::cout<<"press 4 to buy Meat"<<"\t";
+    std::cout<<"press 5 to buy Gas"<<"\t";
+    std::cout<<"press 6 to buy Yoghurt"<<"\t"<<std::endl;
+    std::cout<<"press 9 to QUIT"<<endl;
+    
+    std::cout<<"*****************************"<<std::endl;
+    
+    
+    std::cin>>choice;
+    
+    switch(choice){
+        case 1:
+        std::cout<<"How many loafs of bread do you need: "<<"\n";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_bread();
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"loafs of bread and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 2:
+        std::cout<<"How many pints  of milk do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_milk();
+        
+        
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"litres of milk and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+    
+        case 3:
+        std::cout<<"How many packest of sweets do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_sweets();
+        
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"packets of sweet and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 4:
+        std::cout<<"How many kilogrammmes of meat do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_meat();
+        
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"kilogrammmes of meat and it costs"<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 5:
+        std::cout<<"How many gallons of gas do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_gas();
+        
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"gallons of gas and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        case 6:
+        std::cout<<"How many cups of Yoghurt do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_yoghurt();
+        
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+        cout<<"You purchased "<<" "<<item_amount<<" "<<"gallons of gas and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        break;
+        
+        default:
+        std::cout<<"Item not found"<<"" <<std::endl;
+        break;
+    }
+    }while(choice!=9);
+    std::cout<<"Thanks for Shopping with Us, Hope you come back again."<<std::endl;
+    std::cout<<"your total amount today is: "<<" "<<item_amount;
+  }
+
+  int getCost(){
+    return total_cost;
+  }
+  
+
+  
+  
+  protected:
+  int total_cost;
+  string name;
+  int balance;
+  double amount;
+};
+
+
+class Food: public Mart{
+    public:
+     Food(){
+         std::cout<<"welcome to the main food stall";
+     }
+     
+     
+    void setCost(){
+    
+    int choice;
+    int item_amount;
+
+    set<string>food_items;
+    
+    food_items= {"chicken","pizza","pilau","smoothie","beef steak","tea/coffee"};
+
+    std::cout<<"**************************"<<std::endl;
+    
+    std::cout<<"Choose from the following Items"<<std::endl;
+    
+    std::cout<<"*****************************"<<endl;
+    
+    for(auto ita=food_items.begin(); ita!=food_items.end(); ita++){
+      std::cout<<" "<<*ita<<std::endl;
+    }
+    
+    std::cout<<"*****************************"<<std::endl;
+   
+    
+    do{
+    
+    std::cout<<"*****************************"<<std::endl;
+    
+    std::cout<<"press 1 to buy chicken"<<"\t";
+    std::cout<<"press 2 to buy pizza"<<"\t";
+    std::cout<<"press 3 to buy pilau"<<"\t"<<std::endl;
+    std::cout<<"press 4 to buy smoothie"<<"\t";
+    std::cout<<"press 5 to buy tea/coffee"<<"\t";
+    std::cout<<"press 9 to QUIT"<<endl;
+    
+    std::cout<<"*****************************"<<std::endl;
+    
+    
+    std::cin>>choice;
+    
+    switch(choice){
+        case 1:
+        std::cout<<"How many pieces of chicken do you need: "<<"\n";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_chicken();
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"pieces of chicken and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            
+            
+            total_cost++;
+        }
+        break;
+        
+        case 2:
+        std::cout<<"what size of pizza do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_pizza();
+     
+    
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else if(item_amount=='S'){
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"size of pizza and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+    
+        case 3:
+        std::cout<<"How many plates of pilau do you need: ";
+        std::cin>>item_amount;
+        
+        total_cost=item_amount*price_of_pilau();
+        
+        
+        if(item_amount<=0){
+          cout<<"item cannot be less than 0";
+        }else{
+          std::cout<<"You purchased "<<" "<<item_amount<<" "<<"plates of pilau and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+          total_cost++;
+        }
+        break;
+        
+        case 4:
+        std::cout<<"How many cups of smoothie  do you need: ";
+        std:: cin>>item_amount;
+        total_cost=item_amount*price_of_smoothie();
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"cups of smoothie and it costs"<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 5:
+        std::cout<<"How many cups of tea or coffee do you need: ";
+        std::cin>>item_amount;
+       total_cost=item_amount*price_of_tea_or_coffee();
+        
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"cups of coffee and tea and they costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        default:
+        std::cout<<"Item not found"<<"" <<endl;
+        break;
+    }
+    
+    }while(choice!=9);
+    std::cout<<"Thanks for Shopping with Us, Hope you come back again."<<std::endl;
+    }
+    
+    int getCost(){
+      return total_cost;
+  }
+  
+  protected:
+  int total_cost;
+  string name;
+  int balance;
+  double amount;
+
+};
+
+
+class Vegetables: public Mart{
+    public:
+  Vegetables(){
+    std::cout<<"welcome to the vegetable stall"<<std::endl;
+  }
+  
+  
+   void setCost(){
+    
+    int choice;
+    int item_amount;
+
+    set<string>vegetables;
+    vegetables={"onions","tomatoes","potatoes","fruits","salads","kales","frozen vegetables","grains"};
+
+    std::cout<<"*****************************"<<endl;
+    std::cout<<"Choose from the following Items"<<endl;
+    std::cout<<"*****************************"<<endl;
+    
+    
+    for(auto ite=vegetables.begin(); ite!=vegetables.end(); ite++){
+      std::cout<<" "<<*ite<<endl;
+    }
+    std::cout<<"*****************************"<<std::endl;
+   
+    
+    do{
+    
+    std::cout<<"*****************************"<<std::endl;
+    
+    std::cout<<"press 1 to buy Onion"<<"\t";
+    std::cout<<"press 2 to buy Tomatoes"<<"\t";
+    std::cout<<"press 3 to buy Potatoes"<<"\t"<<std::endl;
+    std::cout<<"press 4 to buy Fruits"<<"\t";
+    std::cout<<"press 5 to buy Salad"<<"\t";
+    std::cout<<"press 6 to buy Kales"<<"\t"<<endl;
+    std::cout<<"press 7 to buy Grains"<<"\t"<<endl;
+    std::cout<<"press 8 to buy Frozen_vegetables"<<"\t"<<std::endl;
+    std::cout<<"press 9 to QUIT"<<endl;
+    
+    std::cout<<"*****************************"<<std::endl;
+    
+    
+    cin>>choice;
+    
+    switch(choice){
+        case 1:
+        std::cout<<"How many kilogrammes of onions do you need: "<<"\n";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_onions();
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"kilogrammes of Onion and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            
+            
+            total_cost++;
+        }
+        break;
+        
+        case 2:
+        std::cout<<"How many kilogrammes of Tomatoes do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_tomatoes();
+     
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+           std::cout<<"You purchased "<<" "<<item_amount<<" "<<"kilogrammes of Tomatoes and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+    
+        case 3:
+        std::cout<<"How many kilogrammes of Potatoes do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_potatoes();
+
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"kilogrammes of Potatoes and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 4:
+        std::cout<<"How many kilogrammmes of Fruits do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_fruits();
+
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"kilogrammmes of Fruits and it costs"<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 5:
+        std::cout<<"How many kilogrammes of Salad do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_salads();
+        
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+          cout<<"You purchased "<<" "<<item_amount<<" "<<"kilogrammes of Salad and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        case 6:
+        std::cout<<"How many kilogrammes of Kales do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_kales();
+        
+        if(item_amount<=0){
+          std::cout<<"item cannot be less than 0";
+        }else{
+        cout<<"You purchased "<<" "<<item_amount<<" "<<"kilogrammes of Kales and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        break;
+        
+        case 7:
+        std::cout<<"How many kilogrammes of Grains do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_grain();
+        
+        if(item_amount<=0){
+          std::cout<<"item cannot be less than 0";
+        }else{
+        cout<<"You purchased "<<" "<<item_amount<<" "<<"kilogrammes of Grains and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        break;
+        
+        case 8:
+        std::cout<<"How many kilogrammes of Frozen_vegetables do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_frozen_vegetable();
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+        std::cout<<"You purchased "<<" "<<item_amount<<" "<<"kilogrammes of Frozen_vegetables and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        break;
+        
+        default:
+        std::cout<<"Item not found"<<"" <<std::endl;
+        break;
+    }
+    
+    }while(choice!=9);
+    std::cout<<"Thanks for Shopping with Us, Hope you come back again."<<std::endl;
+  }
+  
+  
+  int getCost(){
+      return total_cost;
+  }
+
+protected:
+  int total_cost;
+  string name;
+  int balance;
+  double amount;
+};
+
+class Pharma: public Mart{
+    Pharma(){
+        std::cout<<"welcome to the pharma section ";
+    }
+    
+    
+    void setCost(){
+    
+    int choice;
+    int item_amount;
+
+    set<string>pharmaceuticals;
+    pharmaceuticals={"Tablets","Syrups","Injections","Prescriptions","Over_The_Counter","Restricted_Meds","Pain_Killers","Creams"};
+
+    std::cout<<"*****************************"<<endl;
+    std::cout<<"Choose from the following Items"<<endl;
+    std::cout<<"*****************************"<<endl;
+    
+    
+    for(auto iti=pharmaceuticals.begin(); iti!=pharmaceuticals.end(); iti++){
+      std::cout<<" "<<*iti<<endl;
+    }
+    std::cout<<"*****************************"<<std::endl;
+   
+    
+    do{
+    
+    std::cout<<"*****************************"<<std::endl;
+    
+    std::cout<<"press 1 to buy Tablets"<<"\t";
+    std::cout<<"press 2 to buy Syrups"<<"\t";
+    std::cout<<"press 3 to buy Injections"<<"\t"<<std::endl;
+    std::cout<<"press 4 to buy Prescriptions"<<"\t";
+    std::cout<<"press 5 to buy Over_The_Counter"<<"\t";
+    std::cout<<"press 6 to buy Restricted_Meds"<<"\t"<<std::endl;
+    std::cout<<"press 7 to buy Pain_Killers"<<"\t"<<endl;
+    std::cout<<"press 8 to buy Creams"<<"\t"<<endl;
+    std::cout<<"press 9 to QUIT"<<endl;
+    
+    std::cout<<"*****************************"<<std::endl;
+    
+    
+    cin>>choice;
+    
+    switch(choice){
+        case 1:
+        std::cout<<"How many Tablets do you need: "<<"\n";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_tablets();
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"tablets and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            
+            
+            total_cost++;
+        }
+        break;
+        
+        case 2:
+        std::cout<<"How many bottles of Syrups do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_syrups();
+     
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"bottles of Syrups and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+    
+        case 3:
+        std::cout<<"How many rounds of Injections do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_injection();
+
+        
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Injections and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 4:
+        std::cout<<"How many Prescriptions do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_prescriptions();
+
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Prescriptions and it costs"<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 5:
+        std::cout<<"How many Over_The_Counter medicines do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_over_the_counter();
+        
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+          std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Over_The_Counter medicines and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 6:
+        std::cout<<"How many Restricted_Meds do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_restricted_meds();
+        
+        if(item_amount<=0){
+          cout<<"item cannot be less than 0";
+        }else{
+        std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Restricted_Meds and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        break;
+        
+        case 7:
+        std::cout<<"How many Pain_Killers do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_pain_killers();
+        
+        if(item_amount<=0){
+          std::cout<<"item cannot be less than 0";
+        }else{
+        std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Pain_Killers and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        break;
+        
+        case 8:
+        std::cout<<"How many Creams do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_cream();
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+        std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Creams and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        break;
+        
+        default:
+        std::cout<<"Item not found"<<"" <<std::endl;
+        break;
+    }
+    
+    }while(choice!=9);
+    std::cout<<"Thanks for Shopping with Us, Hope you come back again."<<std::endl;
+  }
+  
+  
+  
+  
+  
+  int getCost(){
+      return total_cost;
+  }
+    
+    
+
+};
+
+class clothing: public Mart{
+    public:
+    clothing(){
+        std::cout<<"welcome to the clothing section.";
+    }
+    
+    
+    void setCost(){
+    
+    int choice;
+    int item_amount;
+
+    set<string>Womens_section;
+    set<string>Mens_section;
+    
+    Womens_section={"Shorts","Skirt","Dress","T-shirt","Trouser"};
+    Mens_section={"Jacket","Trouser","Shirt","Hoodie","Jumper"};
+    
+    
+    
+    std::cout<<"*****************************"<<std::endl;
+    std::cout<<"Choose from the following Items"<<std::endl;
+    std::cout<<"*****************************"<<std::endl;
+    
+    
+    for(auto ito=Womens_section.begin(); ito!=Womens_section.end(); ito++){
+      std::cout<<" "<<*ito<<std::endl;
+    }
+    
+    for(auto itu=Mens_section.begin(); itu!=Mens_section.end(); itu++){
+      std::cout<<" "<<*itu<<std::endl;
+    }
+    
+    
+    std::cout<<"*****************************"<<std::endl;
+   
+    
+    do{
+    
+    std::cout<<"*****************************"<<std::endl;
+    
+    std::cout<<"press 1 to buy Shorts"<<"\t";
+    std::cout<<"press 2 to buy Skirt"<<"\t";
+    std::cout<<"press 3 to buy Dress"<<"\t"<<std::endl;
+    std::cout<<"press 4 to buy T-shirt"<<"\t";
+    std::cout<<"press 5 to buy Trouser"<<"\t";
+    std::cout<<"press 6 to buy Jacket"<<"\t"<<std::endl;
+    std::cout<<"press 7 to buy Shirt"<<"\t"<<std::endl;
+    std::cout<<"press 8 to buy Hoodies"<<"\t"<<std::endl;
+    std::cout<<"press 8 to buy Jumper"<<"\t"<<std::endl;
+    
+    std::cout<<"press 9 to QUIT"<<std::endl;
+    
+    std::cout<<"*****************************"<<std::endl;
+    
+    
+    std::cin>>choice;
+    
+    switch(choice){
+        case 1:
+        std::cout<<"How many Shorts do you need: "<<"\n";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_shorts();
+        
+        if(item_amount<=0){
+            std::cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Shorts and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            
+            
+            total_cost++;
+        }
+        break;
+        
+        case 2:
+        std::cout<<"How many Skirts do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_skirts();
+     
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Skirts and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+    
+        case 3:
+        std::cout<<"How many Dresses do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_dress();
+
+        
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Dresses and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 4:
+        std::cout<<"How many T-shirts do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_t_shirt();
+
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+            std::cout<<"You purchased "<<" "<<item_amount<<" "<<"T-shirts and it costs"<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 5:
+        std::cout<<"How many Trousers do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_trouser();
+        
+        
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+          std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Trousers and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+            total_cost++;
+        }
+        break;
+        
+        case 6:
+        std::cout<<"How many Jackets do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_jacket();
+        
+        if(item_amount<=0){
+          cout<<"item cannot be less than 0";
+        }else{
+        std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Jackets it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        
+        break;
+        case 7:
+        std::cout<<"How many Shirts do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_shirt();
+        
+        if(item_amount<=0){
+          cout<<"item cannot be less than 0";
+        }else{
+        std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Shirts and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        break;
+        case 8:
+        std::cout<<"How many Hoodies do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_hoodie();
+        
+        if(item_amount<=0){
+          std::cout<<"item cannot be less than 0";
+        }else{
+        std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Hoodies and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        break;
+        
+        case 10:
+        std::cout<<"How many Jumpers do you need: ";
+        std::cin>>item_amount;
+        total_cost=item_amount*price_of_jumper();
+        
+        if(item_amount<=0){
+            cout<<"item cannot be less than 0";
+        }else{
+        std::cout<<"You purchased "<<" "<<item_amount<<" "<<"Jumpers and it costs "<<" "<<total_cost<<" "<<"dollars"<<std::endl;
+        total_cost++;
+        }
+        break;
+        
+        default:
+        std::cout<<"Item not found"<<"" <<std::endl;
+        break;
+    }
+    
+    }while(choice!=9);
+    std::cout<<"Thanks for Shopping with Us, Hope you come back again."<<std::endl;
+  }
+  
+  
+  int getCost(){
+      return total_cost;
+  }
+    
+};
+
+
+int main(){
+  Control();
+
+  Mart cart;
+  cart.setCost();
+  cout<<"total cost is "<<" "<<cart.getCost();
+
+
+return 0;  
+}
+
