@@ -1,0 +1,75 @@
+#include <iostream>
+#include<string>
+#include<algorithm>
+
+class Bank{
+  public:
+  Bank(){
+    std::cout<<"welcome to the Bank"<<"\n";
+    acctBalance=1000;
+  }
+
+  ~Bank(){
+    std::cout<<"Thank you for doing business with us"<<"\n";
+  }
+
+  void setName(){
+    std::cout<<"please enter your UserName";
+    std::cin>>user_name;
+  }
+  std::string getName(){
+    return user_name;
+  }
+
+  void setPass(){
+    std::cout<<"please enter your password: ";
+    std::cin>>password;
+    while(password.size()<=4){
+      std::cout<<"TOO SHORT"<<"\n";
+      abort();  
+    }
+  }
+  std::string getPass(){
+    return password;
+  }
+  void action(){
+    std::cout<<"How can we help you today"<<"\n";
+    char choice;
+    std::cout<<"please enter C for chequing & S for saving: ";
+    std::cin>>choice;
+
+    if(choice=='C'||'c'){
+      int amount;
+      std::cout<<"how much would like to widthraw today"<<"\n";
+      std::cin>>amount;
+      acctBalance= acctBalance-amount;\
+      std::cout<<"Your remaining balance is "<<acctBalance<<"\n";
+    }else{
+      int amountt;
+      std::cout<<"how much would you like to deposit today";
+      std::cin>>amountt;
+      acctBalance=acctBalance+amountt;
+      std::cout<<"Your balance is "<<acctBalance<<"\n";
+    }
+  }
+
+  private:
+  std::string user_name;
+  double acctBalance;
+  long phone_number;
+  std::string password;
+
+};
+int main() {
+  Bank bnk;
+  bnk.setName();
+  bnk.setPass();
+  bnk.action();
+
+
+
+
+return 0;
+
+
+}
